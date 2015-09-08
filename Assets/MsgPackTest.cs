@@ -23,7 +23,7 @@ public class MsgPackTest : MonoBehaviour {
 		var s = SerializationContext.Default.GetSerializer<SampleClass> ();
 		
 		Debug.Log ("Fail Class");
-		var s2 = SerializationContext.Default.GetSerializer<SampleClass> ();
+		var s2 = SerializationContext.Default.GetSerializer<FailClass> ();
 		
 		Debug.Log ("Start() End");
 	}
