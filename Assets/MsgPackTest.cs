@@ -6,26 +6,30 @@ using MsgPack;
 using MsgPack.Serialization;
 
 public class MsgPackTest : MonoBehaviour {
-
+	
+	public class SampleClass {
+		public string str;
+	}
+	
+	public class FailClass {
+		public string str;
+		public int number;
+	}
+	
 	// Use this for initialization
 	void Start () {
-
-		Dictionary<string, string> dict = new Dictionary<string, string>();
-		dict.Add ("foo", "bar");
-		dict.Add ("hoge", "hoge");
-
-		var s = SerializationContext.Default.GetSerializer<Dictionary<string, string>> ();
-		var packed = s.PackSingleObject (dict);
 		
-		var unpacked = s.UnpackSingleObject (packed);
-
-		foreach (var kv in unpacked) {
-			Debug.Log (kv.Key + ":" + kv.Value);
-		}
+		Debug.Log ("Sample Class");
+		var s = SerializationContext.Default.GetSerializer<SampleClass> ();
+		
+		Debug.Log ("Fail Class");
+		var s2 = SerializationContext.Default.GetSerializer<SampleClass> ();
+		
+		Debug.Log ("Start() End");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 }
